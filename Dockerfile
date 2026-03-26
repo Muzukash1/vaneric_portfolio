@@ -10,11 +10,17 @@ WORKDIR /app
 
 COPY . .
 
-# Create SQLite database file
+# Create SQLite database
 RUN mkdir -p database && touch database/database.sqlite
 
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
+
+# Generate key
+RUN php artisan key:generate
+
+# Run migrations
+RUN php artisan migrate --force
 
 # Fix permissions
 RUN chmod -R 775 storage bootstrap/cache database
