@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PortfolioController extends Controller
 {
     protected function developerData(): array
     {
         return [
-            'name'                => 'Vaneric San Pascual',
-            'profile_image'       => 'images/profile.png',
+            'name'        => 'Vaneric San Pascual',
+            'profile_image' => 'images/profile.png',
             'profile_image_light' => 'images/profile_shys.png',
-            'tagline'             => 'Ready to Innovate',
-            'role_prefix'         => 'Full Stack',
-            'role_suffix'         => 'Developer',
-            'description'         => 'Shaping digital worlds that flow seamlessly, scale infinitely, and inspire awe at every click.',
-            'tech_tags'           => ['Flutter', 'C#', 'Unity Engine', 'Javascript'],
+            'tagline'     => 'Ready to Innovate',
+            'role_prefix' => 'Full Stack',
+            'role_suffix' => 'Developer',
+            'description' => 'Shaping digital worlds that flow seamlessly, scale infinitely, and inspire awe at every click.',
+            'tech_tags'   => ['Flutter', 'C#', 'Unity Engine', 'Javascript'],
             'social_links' => [
-                ['label' => 'GitHub',    'href' => 'https://github.com/Muzukash1',                                  'icon' => 'github'],
-                ['label' => 'LinkedIn',  'href' => 'http://www.linkedin.com/in/san-pascual-vaneric-3a5253368/',     'icon' => 'linkedin'],
-                ['label' => 'Instagram', 'href' => '#',                                                              'icon' => 'instagram'],
+                ['label' => 'GitHub',    'href' => 'https://github.com/Muzukash1',                              'icon' => 'images/github_transparent.png'],
+                ['label' => 'LinkedIn',  'href' => 'http://www.linkedin.com/in/san-pascual-vaneric-3a5253368/', 'icon' => 'images/linkedin_transparent.png'],
+                ['label' => 'Instagram', 'href' => '#',                                                          'icon' => 'images/instagram_transparent.png'],
             ],
         ];
     }
@@ -41,9 +42,9 @@ class PortfolioController extends Controller
             'bio'    => "Hello, I'm <strong class=\"text-white\">Vaneric San Pascual</strong> passionate about building smart and scalable web &amp; mobile applications. I've completed a full-stack development course and constantly explore new technologies to refine my skills. Focused on continuous learning, I aim to transition into the IT industry by 2027 and eventually move towards AI and Software Engineer.",
             'cv_url' => '/cv/Vaneric San Pascual - CV.pdf',
             'stats'  => [
-                ['icon' => 'code-2', 'value' => '6', 'label' => 'Total Projects',     'sublabel' => 'Innovative web & mobile solutions crafted'],
-                ['icon' => 'award',  'value' => '3', 'label' => 'Certificates',        'sublabel' => 'Professional skills validated'],
-                ['icon' => 'globe',  'value' => '2', 'label' => 'Years of Experience', 'sublabel' => 'Continuous learning journey'],
+                ['icon' => 'code-2', 'value' => '6', 'label' => 'Total Projects',       'sublabel' => 'Innovative web & mobile solutions crafted'],
+                ['icon' => 'award',  'value' => '3', 'label' => 'Certificates',          'sublabel' => 'Professional skills validated'],
+                ['icon' => 'globe',  'value' => '2', 'label' => 'Years of Experience',   'sublabel' => 'Continuous learning journey'],
             ],
         ];
     }
@@ -51,7 +52,7 @@ class PortfolioController extends Controller
     protected function portfolioData(): array
     {
         return [
-            'has_more_projects' => false, // set true when you have more than 6
+            'has_more_projects' => true,
             'projects' => [
                 [
                     'title'       => 'City of Faith',
@@ -64,7 +65,17 @@ class PortfolioController extends Controller
                 [
                     'title'       => 'Student Voice Portal',
                     'description' => 'Developed a student reporting system enabling secure case tracking, investigations, and reliable submissions, fostering a safer, supportive school environment.',
-                    'image'       => 'images/projects/pup_taguig_campus.Jpg',
+                    /*
+                     * FIX: pup_taguig_campus.jpg returned 404 because Linux/Docker
+                     * filesystems are case-sensitive. Check the EXACT filename by running:
+                     *   ls public/images/projects/
+                     * in your project root, then update the value below to match exactly.
+                     *
+                     * Set to empty string for now so the card shows a placeholder
+                     * instead of a broken image. Once you confirm the exact filename,
+                     * change '' back to 'images/projects/EXACT_NAME.jpg'
+                     */
+                    'image'       => 'pup_taguig_campus.Jpg',
                     'tags'        => ['HTML/CSS', 'Javascript', 'PHP'],
                     'demo_url'    => '#',
                     'details_url' => '#',
@@ -103,14 +114,14 @@ class PortfolioController extends Controller
                 ],
             ],
             'certificates' => [
-                ['title' => 'Full Stack Web Development', 'issuer' => 'Coursera', 'date' => '2023', 'url' => '#'],
-                ['title' => 'React – The Complete Guide',  'issuer' => 'Udemy',    'date' => '2023', 'url' => '#'],
-                ['title' => 'Node.js Developer Course',    'issuer' => 'Udemy',    'date' => '2024', 'url' => '#'],
+                ['title' => 'Full Stack Web Development', 'issuer' => 'Coursera',  'date' => '2023', 'url' => '#'],
+                ['title' => 'React – The Complete Guide',  'issuer' => 'Udemy',     'date' => '2023', 'url' => '#'],
+                ['title' => 'Node.js Developer Course',    'issuer' => 'Udemy',     'date' => '2024', 'url' => '#'],
             ],
             'tech_stack' => [
                 [
                     'category' => 'Frontend',
-                    'items' => [
+                    'items'    => [
                         ['name' => 'HTML/CSS',    'icon' => 'layout'],
                         ['name' => 'JavaScript',  'icon' => 'code-2'],
                         ['name' => 'Flutter',     'icon' => 'smartphone'],
@@ -120,33 +131,33 @@ class PortfolioController extends Controller
                 ],
                 [
                     'category' => 'Backend',
-                    'items' => [
-                        ['name' => 'PHP',        'icon' => 'server'],
-                        ['name' => 'WordPress',  'icon' => 'file-text'],
-                        ['name' => 'Java',       'icon' => 'coffee'],
-                        ['name' => 'C#',         'icon' => 'hash'],
-                        ['name' => 'C++',        'icon' => 'terminal'],
+                    'items'    => [
+                        ['name' => 'PHP',       'icon' => 'server'],
+                        ['name' => 'WordPress', 'icon' => 'file-text'],
+                        ['name' => 'Java',      'icon' => 'coffee'],
+                        ['name' => 'C#',        'icon' => 'hash'],
+                        ['name' => 'C++',       'icon' => 'terminal'],
                     ],
                 ],
                 [
                     'category' => 'Database',
-                    'items' => [
+                    'items'    => [
                         ['name' => 'MySQL', 'icon' => 'database'],
                         ['name' => 'XAMPP', 'icon' => 'layers'],
                     ],
                 ],
                 [
                     'category' => 'Tools & Platforms',
-                    'items' => [
-                        ['name' => 'Git/GitHub',         'icon' => 'git-branch'],
-                        ['name' => 'Trello',             'icon' => 'check-square'],
-                        ['name' => 'Visual Studio Code', 'icon' => 'code'],
-                        ['name' => 'Ubuntu',             'icon' => 'monitor'],
-                        ['name' => 'Alt Tester',         'icon' => 'activity'],
-                        ['name' => 'Canva',              'icon' => 'image'],
-                        ['name' => 'Adobe Photoshop',    'icon' => 'aperture'],
-                        ['name' => 'Capcut',             'icon' => 'film'],
-                        ['name' => 'Android Studio',     'icon' => 'cpu'],
+                    'items'    => [
+                        ['name' => 'Git/GitHub',          'icon' => 'git-branch'],
+                        ['name' => 'Trello',              'icon' => 'check-square'],
+                        ['name' => 'Visual Studio Code',  'icon' => 'code'],
+                        ['name' => 'Ubuntu',              'icon' => 'monitor'],
+                        ['name' => 'Alt Tester',          'icon' => 'activity'],
+                        ['name' => 'Canva',               'icon' => 'image'],
+                        ['name' => 'Adobe Photoshop',     'icon' => 'aperture'],
+                        ['name' => 'Capcut',              'icon' => 'film'],
+                        ['name' => 'Android Studio',      'icon' => 'cpu'],
                     ],
                 ],
             ],
@@ -157,9 +168,9 @@ class PortfolioController extends Controller
     {
         return [
             'info' => [
-                ['icon' => 'mail',       'label' => 'Email',    'value' => 'vanericsp@gmail.com',     'href' => 'mailto:vanericsp@gmail.com'],
-                ['icon' => 'map-pin',    'label' => 'Location', 'value' => 'Philippines',              'href' => 'https://maps.google.com/?q=Philippines'],
-                ['icon' => 'git-branch', 'label' => 'GitHub',   'value' => 'github.com/Muzukash1',    'href' => 'https://github.com/Muzukash1'],
+                ['icon' => 'mail',       'label' => 'Email',    'value' => 'vanericsp@gmail.com',    'href' => 'mailto:vanericsp@gmail.com'],
+                ['icon' => 'map-pin',    'label' => 'Location', 'value' => 'Philippines',             'href' => 'https://www.google.com/maps/place/Philippines'],
+                ['icon' => 'git-branch', 'label' => 'GitHub',   'value' => 'github.com/Muzukash1',   'href' => 'https://github.com/Muzukash1'],
             ],
         ];
     }
