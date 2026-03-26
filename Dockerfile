@@ -16,6 +16,9 @@ RUN mkdir -p database && touch database/database.sqlite
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Create .env file
+RUN cp .env.example .env
+
 # Generate key
 RUN php artisan key:generate
 
