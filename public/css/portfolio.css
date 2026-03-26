@@ -1,0 +1,141 @@
+/* =========================================
+   Portfolio – Custom CSS
+   ========================================= */
+
+:root {
+  --brand:        #7B5CF0;
+  --brand-light:  #A78BFA;
+  --surface:      #0D0D1A;
+  --surface-card: #12121F;
+  --surface-raised:#1A1A2E;
+  --border-dim:   #1E1E35;
+}
+
+/* --- Base --- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--surface);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Grid overlay --- */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(123,92,240,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123,92,240,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+/* --- Navbar blur --- */
+.nav-blur {
+  background: rgba(13,13,26,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-dim);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-blur.scrolled {
+  background: rgba(13,13,26,0.92);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+
+/* --- Nav link active indicator --- */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 2px;
+  background: var(--brand-light);
+  border-radius: 9999px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-link.active::after,
+.nav-link:hover::after { transform: scaleX(1); }
+
+.nav-link.active { color: #fff; }
+
+/* --- Portfolio tabs --- */
+.portfolio-tab {
+  color: #9CA3AF;
+  background: transparent;
+}
+
+.portfolio-tab.active {
+  background: var(--surface-raised);
+  color: #fff;
+  box-shadow: 0 0 0 1px var(--border-dim);
+}
+
+.portfolio-tab:hover:not(.active) {
+  color: #D1D5DB;
+  background: rgba(255,255,255,0.03);
+}
+
+/* --- Typing cursor blink --- */
+.typing-cursor {
+  display: inline-block;
+  animation: blink 0.8s step-end infinite;
+  color: var(--brand-light);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* --- Reveal on scroll --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* stagger siblings */
+.reveal:nth-child(2) { transition-delay: 0.1s; }
+.reveal:nth-child(3) { transition-delay: 0.2s; }
+.reveal:nth-child(4) { transition-delay: 0.3s; }
+
+/* --- Fade-up keyframe for hero --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* hero children with animation-delay use this */
+.animate-fade-up { animation: fadeUp 0.7s ease forwards; }
+
+/* --- Glow keyframe --- */
+@keyframes glow {
+  0%,100% { opacity: 0.35; }
+  50%      { opacity: 0.7;  }
+}
+.animate-glow { animation: glow 3s ease-in-out infinite; }
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar          { width: 6px; }
+::-webkit-scrollbar-track    { background: var(--surface); }
+::-webkit-scrollbar-thumb    { background: var(--border-dim); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand); }
+
+/* --- Selection colour --- */
+::selection { background: rgba(123,92,240,0.35); color: #fff; }
+
+/* --- Responsive helper --- */
+@media (max-width: 640px) {
+  h1 { font-size: 3rem !important; }
+}
