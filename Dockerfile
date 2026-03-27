@@ -16,18 +16,13 @@ RUN mkdir -p database && touch database/database.sqlite
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Create .env file
-RUN cp .env.example .env
-
-# Generate key
-RUN php artisan key:generate
-
-# Run migrations
-RUN php artisan migrate --force
-
 # Fix permissions
 RUN chmod -R 775 storage bootstrap/cache database
 
+# Copy the startup script
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 EXPOSE 10000
 
-CMD php -S 0.0.0.0:10000 -t public
+CMD ["/usr/local/bin/docker-entrypoint.sh"]
