@@ -32,12 +32,12 @@
         {{-- Description --}}
         <p class="text-gray-400 text-sm sm:text-base font-body leading-relaxed mb-8 afu mx-auto lg:mx-0"
            style="animation-delay:.5s;opacity:0;max-width:480px;">
-            {{ $developer['description'] ?? ['Shaping digital worlds that flow seamlessly, scale infinitely, and inspire awe at every click.'] }}
+            {{ $developer['description'] ?? 'Enhancing digital experiences that are smooth, scalable, and made to impress.' }}
         </p>
 
         {{-- Tech tags --}}
         <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-8 afu" style="animation-delay:.6s;opacity:0;">
-            @foreach($developer['tech_tags'] ?? ['Flutter','C#','Unity Engine','Javascript'] as $tag)
+            @foreach($developer['tech_tags'] ?? ['React','Javascript','Node.js','PostgreSQL'] as $tag)
                 <span class="tech-tag px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-body cursor-default transition-all duration-300"
                       style="border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);color:#D1D5DB;">
                     {{ $tag }}
@@ -49,7 +49,7 @@
         <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-10 afu" style="animation-delay:.7s;opacity:0;">
             <a href="#portfolio"
                class="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg font-display font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5"
-                style="background:rgba(26,26,46,1);border:1px solid #1E1E35;color:#FFFFFF;"
+               style="background:rgba(26,26,46,1);border:1px solid #1E1E35;color:#FFFFFF;"
                onmouseover="this.style.borderColor='rgba(123,92,240,0.5)';this.style.boxShadow='0 4px 20px rgba(123,92,240,0.18)'"
                onmouseout="this.style.borderColor='#1E1E35';this.style.boxShadow='none'">
                 <i data-lucide="external-link" class="w-4 h-4 flex-shrink-0"></i> Projects
@@ -160,12 +160,12 @@
                         display:inline-flex;align-items:center;gap:5px;
                         padding:5px 12px;border-radius:9999px;
                         background:rgba(123,92,240,0.12);border:1px solid rgba(123,92,240,0.35);
-                        color:#00FF00;font-size:11px;font-family:'Syne',sans-serif;font-weight:600;
+                        color:#00FF88;font-size:11px;font-family:'Syne',sans-serif;font-weight:600;
                         backdrop-filter:blur(8px);white-space:nowrap;
                         box-shadow:0 0 16px rgba(123,92,240,0.18);">
-                <span style="width:6px;height:6px;background:#00FF00;border-radius:50%;
+                <span style="width:6px;height:6px;background:#00FF88;border-radius:50%;
                              animation:pulse 1.5s infinite;display:inline-block;
-                             box-shadow:0 0 6px #00FF00;flex-shrink:0;"></span>
+                             box-shadow:0 0 6px #00FF88;flex-shrink:0;"></span>
                 Available for work
             </div>
         </div>
@@ -202,7 +202,7 @@
 </style>
 
 <script>
-const subtitles=['Information Technology Student','Software Developer','Game Developer','Architect of intelligent systems that learn, adapt, and inspire.'];
+const subtitles=['Information Technology Student','Full Stack Developer','Game Developer','Open Source Enthusiast'];
 let si=0,ci=0,del=false;
 const el=document.getElementById('typed-subtitle');
 function type(){

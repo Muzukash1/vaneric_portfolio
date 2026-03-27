@@ -23,9 +23,9 @@
         {{-- Info cards --}}
         <div class="lg:col-span-2 flex flex-col gap-3 sm:gap-4">
             @foreach($contact['info'] ?? [
-                ['icon'=>'mail',       'label'=>'Email',    'value'=>'vanericsp@gmail.com',  'href'=>'mailto:vanericsp@gmail.com'],
-                ['icon'=>'map-pin',    'label'=>'Location', 'value'=>'Philippines',           'href'=>'#'],
-                ['icon'=>'git-branch', 'label'=>'GitHub',   'value'=>'github.com/Muzukash1', 'href'=>'https://github.com/Muzukash1'],
+                ['icon'=>'mail',    'label'=>'Email',    'value'=>'vaneric@example.com','href'=>'mailto:vaneric@example.com'],
+                ['icon'=>'map-pin', 'label'=>'Location', 'value'=>'Philippines',        'href'=>'#'],
+                ['icon'=>'github',  'label'=>'GitHub',   'value'=>'github.com/vaneric', 'href'=>'#'],
             ] as $i => $info)
                 <a href="{{ $info['href'] }}"
                    class="contact-info-card neon-card sa group relative overflow-hidden flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-2xl transition-all duration-300 hover:-translate-y-0.5"
@@ -66,70 +66,34 @@
                 <form action="{{ route('contact.send') }}" method="POST" class="space-y-3 sm:space-y-4">
                     @csrf
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-
-                        {{-- FIX 1: Added id="contact-name", for="contact-name", autocomplete="name" --}}
                         <div>
-                            <label for="contact-name"
-                                   class="block text-xs font-display font-semibold uppercase tracking-wider mb-1.5"
-                                   style="color:#64748B;">Name</label>
-                            <input type="text"
-                                   id="contact-name"
-                                   name="name"
-                                   required
-                                   autocomplete="name"
-                                   placeholder="Your name"
+                            <label class="block text-xs font-display font-semibold uppercase tracking-wider mb-1.5" style="color:#64748B;">Name</label>
+                            <input type="text" name="name" required placeholder="Your name"
                                    class="contact-field w-full px-3.5 py-2.5 rounded-xl text-white text-sm font-body placeholder:text-gray-600 focus:outline-none transition-all duration-300"
                                    style="background:rgba(13,13,26,0.6);border:1px solid rgba(123,92,240,0.2);color:#E2E8F0;">
                             @error('name') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                         </div>
-
-                        {{-- FIX 1: Added id="contact-email", for="contact-email", autocomplete="email" --}}
                         <div>
-                            <label for="contact-email"
-                                   class="block text-xs font-display font-semibold uppercase tracking-wider mb-1.5"
-                                   style="color:#64748B;">Email</label>
-                            <input type="email"
-                                   id="contact-email"
-                                   name="email"
-                                   required
-                                   autocomplete="email"
-                                   placeholder="you@example.com"
+                            <label class="block text-xs font-display font-semibold uppercase tracking-wider mb-1.5" style="color:#64748B;">Email</label>
+                            <input type="email" name="email" required placeholder="you@example.com"
                                    class="contact-field w-full px-3.5 py-2.5 rounded-xl text-white text-sm font-body placeholder:text-gray-600 focus:outline-none transition-all duration-300"
                                    style="background:rgba(13,13,26,0.6);border:1px solid rgba(123,92,240,0.2);color:#E2E8F0;">
                             @error('email') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                         </div>
                     </div>
-
-                    {{-- FIX 1: Added id="contact-subject", for="contact-subject", autocomplete="off" --}}
                     <div>
-                        <label for="contact-subject"
-                               class="block text-xs font-display font-semibold uppercase tracking-wider mb-1.5"
-                               style="color:#64748B;">Subject</label>
-                        <input type="text"
-                               id="contact-subject"
-                               name="subject"
-                               autocomplete="off"
-                               placeholder="What's it about?"
+                        <label class="block text-xs font-display font-semibold uppercase tracking-wider mb-1.5" style="color:#64748B;">Subject</label>
+                        <input type="text" name="subject" placeholder="What's it about?"
                                class="contact-field w-full px-3.5 py-2.5 rounded-xl text-white text-sm font-body placeholder:text-gray-600 focus:outline-none transition-all duration-300"
                                style="background:rgba(13,13,26,0.6);border:1px solid rgba(123,92,240,0.2);color:#E2E8F0;">
                     </div>
-
-                    {{-- FIX 1: Added id="contact-message", for="contact-message", autocomplete="off" --}}
                     <div>
-                        <label for="contact-message"
-                               class="block text-xs font-display font-semibold uppercase tracking-wider mb-1.5"
-                               style="color:#64748B;">Message</label>
-                        <textarea id="contact-message"
-                                  name="message"
-                                  rows="4"
-                                  required
-                                  autocomplete="off"
-                                  placeholder="Tell me about your project..."
+                        <label class="block text-xs font-display font-semibold uppercase tracking-wider mb-1.5" style="color:#64748B;">Message</label>
+                        <textarea name="message" rows="4" required placeholder="Tell me about your project..."
                                   class="contact-field w-full px-3.5 py-2.5 rounded-xl text-white text-sm font-body placeholder:text-gray-600 focus:outline-none transition-all duration-300 resize-none"
                                   style="background:rgba(13,13,26,0.6);border:1px solid rgba(123,92,240,0.2);color:#E2E8F0;"></textarea>
                         @error('message') <p class="text-red-400 text-xs mt-1">{{ $message }}</p> @enderror
                     </div>
-
                     <button type="submit"
                             class="contact-submit w-full py-2.5 sm:py-3 rounded-xl font-display font-semibold text-sm text-white transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2"
                             style="background:linear-gradient(135deg,#7B5CF0 0%,#6D28D9 100%);

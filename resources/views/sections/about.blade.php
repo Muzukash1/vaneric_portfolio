@@ -39,9 +39,9 @@
     {{-- Stats — 1 col phone, 3 col md+ --}}
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 sa-group">
         @foreach($about['stats'] ?? [
-            ['icon'=>'code-2','value'=>'6','label'=>'Total Projects',    'sublabel'=>'Innovative web & mobile solutions crafted'],
+            ['icon'=>'code-2','value'=>'4','label'=>'Total Projects',    'sublabel'=>'Innovative web & mobile solutions crafted'],
             ['icon'=>'award', 'value'=>'3','label'=>'Certificates',       'sublabel'=>'Professional skills validated'],
-            ['icon'=>'globe', 'value'=>'2','label'=>'Years of Experience','sublabel'=>'Continuous learning journey'],
+            ['icon'=>'globe', 'value'=>'3','label'=>'Years of Experience','sublabel'=>'Continuous learning journey'],
         ] as $stat)
             <div class="about-stat-card neon-card group relative overflow-hidden rounded-2xl p-5 sm:p-6 cursor-default"
                  style="background:linear-gradient(135deg,#1A1535 0%,#16142E 40%,#1E1440 100%);

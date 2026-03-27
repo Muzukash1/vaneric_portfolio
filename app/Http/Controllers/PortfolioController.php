@@ -65,17 +65,7 @@ class PortfolioController extends Controller
                 [
                     'title'       => 'Student Voice Portal',
                     'description' => 'Developed a student reporting system enabling secure case tracking, investigations, and reliable submissions, fostering a safer, supportive school environment.',
-                    /*
-                     * FIX: pup_taguig_campus.jpg returned 404 because Linux/Docker
-                     * filesystems are case-sensitive. Check the EXACT filename by running:
-                     *   ls public/images/projects/
-                     * in your project root, then update the value below to match exactly.
-                     *
-                     * Set to empty string for now so the card shows a placeholder
-                     * instead of a broken image. Once you confirm the exact filename,
-                     * change '' back to 'images/projects/EXACT_NAME.jpg'
-                     */
-                    'image'       => 'pup_taguig_campus.Jpg',
+                    'image'       => 'images/projects/pup_taguig_campus.jpg',
                     'tags'        => ['HTML/CSS', 'Javascript', 'PHP'],
                     'demo_url'    => '#',
                     'details_url' => '#',
