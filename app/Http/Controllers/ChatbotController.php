@@ -23,11 +23,11 @@ class ChatbotController extends Controller
             'goal'     => 'Transition into the IT industry by 2027, then move towards AI and data science.',
 
             'skills' => [
-                'frontend' => ['React', 'JavaScript', 'HTML5', 'CSS3', 'TailwindCSS'],
-                'backend'  => ['Node.js', 'Express.js', 'Laravel', 'PHP'],
-                'database' => ['PostgreSQL', 'MySQL', 'Firebase', 'MongoDB'],
-                'tools'    => ['Git', 'GitHub', 'Vercel', 'Docker', 'Figma'],
-                'learning' => ['Python', 'AI/ML fundamentals'],
+                'frontend' => ['HTML/CSS', 'JavaScript', 'Flutter', 'Dart', 'Unity Engine'],
+                'backend'  => ['PHP', 'Wordpress', 'Java', 'C#', 'C++'],
+                'database' => ['MySQL', 'Xampp'],
+                'tools'    => ['Git', 'GitHub', 'Trelo', 'Visual Studio Code', 'Ubuntu', 'Alt Tester', 'Canva', 'Adobe Photoshop', 'Capcut', 'Android Studio'],
+                'learning' => ['Javascript', 'AI Integration'],
             ],
 
             'projects' => [
